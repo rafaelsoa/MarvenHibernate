@@ -2,6 +2,10 @@
 package br.senac.rn.dao;
 
 import br.senac.rn.model.Categoria;
+import br.senac.rn.model.Cliente;
+import br.senac.rn.model.Produto;
+import br.senac.rn.model.Sexo;
+import br.senac.rn.model.Venda;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -9,21 +13,25 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 
-public class CategoriaDAO {
-        private EntityManager em;
-    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("ConexaoDB");
+public class VendaDAO {
+    
+    
+     private EntityManager em;
+     private EntityManagerFactory emf = Persistence.createEntityManagerFactory("ConexaoDB");
+     
+     
 
-    public CategoriaDAO() {
+    public VendaDAO() {
   
             em = emf.createEntityManager();
        
-
     }
 
-public boolean insert(Categoria categoria){
+public boolean insert(Venda venda){
     try {
+        
         em.getTransaction().begin();
-        em.persist(categoria);
+        em.persist(venda);
         em.getTransaction().commit();
         return true;
     } catch (Exception error) {
@@ -32,10 +40,10 @@ public boolean insert(Categoria categoria){
 return false ;
 }
     
-public boolean delete(Categoria categoria){
+public boolean delete(Venda venda){
     try {
         em.getTransaction().begin();
-        em.remove(categoria);
+        em.remove(venda);
         em.getTransaction().commit();
         return true;
     } catch (Exception error) {
@@ -44,10 +52,10 @@ public boolean delete(Categoria categoria){
 return false ;
 }
 
-public boolean update(Categoria categoria){
+public boolean update(Venda venda){
     try {
         em.getTransaction().begin();
-        em.merge(categoria);
+        em.merge(venda);
         em.getTransaction().commit();
         return true;
     } catch (Exception error) {
@@ -57,20 +65,20 @@ return false ;
 }
 
 
-public List<Categoria> selectAll(){
-return em.createQuery("SELECT ca FROM Categoria ca").getResultList();
+public List<Venda> selectAll(){
+return em.createQuery("SELECT v FROM Venda v").getResultList();
 
 
 }
     
 
-public Categoria selectById(int id){
-   return em.find(Categoria.class, id);
+public Venda selectById(int id){
+   return em.find(Venda.class, id);
 
 }
 
-public List<Categoria> selectByFilter (String filter){
-    Query query = em.createQuery("select ca from Categoria ca where ca.nome like :filtro");
+public List<Venda> selectByFilter (String filter){
+    Query query = em.createQuery("select v from Venda v where v.id like :filtro");
     query.setParameter("filtro", "%" + filter + "%");
     return query.getResultList();
 
@@ -78,4 +86,7 @@ public List<Categoria> selectByFilter (String filter){
 }
 
 
+    
+    
+    
 }

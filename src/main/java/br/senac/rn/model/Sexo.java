@@ -13,6 +13,10 @@ public class Sexo {
     private int id;
     private String nome;
     private String sigla;
+
+    public Sexo(String outros, String string) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     public int getId() {
         return id;

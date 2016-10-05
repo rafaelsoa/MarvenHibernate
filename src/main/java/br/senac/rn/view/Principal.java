@@ -1,4 +1,3 @@
-
 package br.senac.rn.view;
 
 import br.senac.rn.dao.ClienteDAO;
@@ -6,10 +5,20 @@ import br.senac.rn.dao.SexoDAO;
 import br.senac.rn.model.Cliente;
 import br.senac.rn.model.Sexo;
 
-
 public class Principal {
-    
+
     public static void main(String[] args) {
+
+       SexoDAO dao =new SexoDAO();
+       
+       for (Sexo s: dao.selectAll()){
+         System.out.println(s.toString());
+       
+       }
+       
+       System.exit(0);
+        
+
 //        
 //        Sexo sexo = new Sexo();
 ////        SexoDAO dao = new SexoDAO();
@@ -26,16 +35,15 @@ public class Principal {
 //   
 //       System.exit(0); 
 //        -------------------------------------------------------
-        Cliente cliente = new Cliente();
-        cliente.setNome("José");
-        cliente.setCpf("0988988");
-        cliente.setSexo(new SexoDAO().selectById(1));
-        
-        ClienteDAO dao = new ClienteDAO();
-        
-        dao.insert(cliente);
+//        Cliente cliente = new Cliente();
+//        cliente.setNome("José");
+//        cliente.setCpf("0988988");
+//        cliente.setSexo(new SexoDAO().selectById(1));
 //        
-        
+//        ClienteDAO dao = new ClienteDAO();
+//        
+//        dao.insert(cliente);
+//        
 //        ClienteDAO cliente = new ClienteDAO();
 //        for(Cliente cliente)
 //        
@@ -46,19 +54,8 @@ public class Principal {
 //        s.setNome("masculino");
 //        SexoDAO dAO = new SexoDAO();
 //        dAO.insert(s);
-        
-        
-        System.exit(0);
-        
-        
-        
-        
-        
-        
-      }
-        
-    }
-    
-    
-    
+       
 
+    }
+
+}
