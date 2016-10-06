@@ -18,13 +18,16 @@ public class SexoDAO extends GenericDAO<Sexo>{
     
     public List<Sexo> selectByFilter(String filter) {
         try{
+        em = getEm();
         Query query = em.createQuery("select s from Sexo s where s.nome like :filtro");
         query.setParameter("filtro", "%" + filter + "%");
         return query.getResultList();
-        }catch {
+        }catch (Exception error) {
         
         }
-    
+    return null;
+    }
+}
     
 //    private EntityManager em;
 //    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("ConexaoDB");
@@ -95,4 +98,4 @@ public class SexoDAO extends GenericDAO<Sexo>{
 
 
 
-}
+//}

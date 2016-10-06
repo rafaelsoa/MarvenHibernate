@@ -11,7 +11,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.swing.JOptionPane;
 
 
-public abstract class GenericDAO<T> {
+public abstract class GenericDAO<T extends PersistDB> {
     
    
 
